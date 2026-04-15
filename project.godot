@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CryptOfAnnihilation"
-run/main_scene="uid://dc8ku8lqimxbx"
+run/main_scene="uid://eri5m3chmghy"
 config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
