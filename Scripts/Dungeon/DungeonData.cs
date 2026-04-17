@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class DungeonData : Resource
 {
@@ -10,6 +11,10 @@ public partial class DungeonData : Resource
 
     public Vector2I StartPosition { get; set; }
     public Vector2I ExitPosition { get; set; }
+
+    public DungeonData()
+    {
+    }
 
     public DungeonData(int width, int height, int seed)
     {
@@ -38,5 +43,36 @@ public partial class DungeonData : Resource
             return;
 
         Tiles[pos.X, pos.Y] = tileType;
+    }
+
+    public List<int> GetFlatTileList()
+    {
+        List<int> flatTiles = new List<int>();
+
+        for (int y = 0; y < Height; y++)
+        {
+            for (int x = 0; x < Width; x++)
+            {
+                flatTiles.Add((int)Tiles[x, y]);
+            }
+        }
+
+        return flatTiles;
+    }
+
+    public void SetFlatTileList(List<int> flatTiles)
+    {
+        Tiles = new DungeonTileType[Width, Height];
+
+        int index = 0;
+
+        for (int y = 0; y < Height; y++)
+        {
+            for (int x = 0; x < Width; x++)
+            {
+                Tiles[x, y] = (DungeonTileType)flatTiles[index];
+                index++;
+            }
+        }
     }
 }
