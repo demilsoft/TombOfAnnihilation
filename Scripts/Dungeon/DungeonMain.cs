@@ -5,6 +5,7 @@ public partial class DungeonMain : Node2D
     [Export] public DungeonRenderer Renderer;
 	[Export] public Camera2D Camera;
     [Export] public PackedScene SpawnMarkerScene;
+    [Export] public PackedScene PlayerScene;
 
     public override void _Ready()
     {
@@ -39,6 +40,10 @@ public partial class DungeonMain : Node2D
                 loadedDungeon.StartPosition.Y * 16 + 8
             );
 
+            var player = PlayerScene.Instantiate<PlayerController>();
+            player.Position = startWorldPos;
+            AddChild(player);
+            
             GD.Print($"startWorldPos: {startWorldPos}");
             GD.Print($"Camera is null? {Camera == null}");
 

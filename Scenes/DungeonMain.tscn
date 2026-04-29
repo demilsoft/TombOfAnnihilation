@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dax1e5ujbqe6i"]
+[gd_scene load_steps=11 format=3 uid="uid://dax1e5ujbqe6i"]
 
 [ext_resource type="Script" uid="uid://bh8d0k82sht24" path="res://Scripts/Dungeon/DungeonMain.cs" id="1_1rloc"]
 [ext_resource type="PackedScene" uid="uid://devwyany3l07r" path="res://Scenes/SpawnMarker.tscn" id="2_2r2rd"]
 [ext_resource type="Texture2D" uid="uid://d1h67fko88pqj" path="res://Art/Tiles/walls_floor.png" id="2_q6101"]
+[ext_resource type="PackedScene" uid="uid://bhelqs4e8nlng" path="res://Scenes/Player.tscn" id="3_i44xl"]
 [ext_resource type="Script" uid="uid://cxfbqh5en50tq" path="res://Scripts/Dungeon/DungeonRenderer.cs" id="3_q6101"]
 [ext_resource type="Script" uid="uid://c2slb6i1jxi10" path="res://Scripts/Dungeon/DebugCamera.cs" id="4_0fe1k"]
 
@@ -597,6 +598,7 @@ script = ExtResource("1_1rloc")
 Renderer = NodePath("DungeonRenderer")
 Camera = NodePath("DebugCamera")
 SpawnMarkerScene = ExtResource("2_2r2rd")
+PlayerScene = ExtResource("3_i44xl")
 
 [node name="FloorLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_2r2rd")
