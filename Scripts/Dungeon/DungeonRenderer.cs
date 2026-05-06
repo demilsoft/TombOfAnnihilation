@@ -9,7 +9,12 @@ public partial class DungeonRenderer : Node
     [Export] public Vector2I FloorAtlasCoords = new Vector2I(0, 0);
 
     [Export] public int WallSourceId = 0;
-    [Export] public Vector2I WallAtlasCoords = new Vector2I(1, 0);
+
+    [Export] public Vector2I WallDefaultAtlasCoords = new Vector2I(0, 0);
+    [Export] public Vector2I WallNorthAtlasCoords = new Vector2I(1, 0);
+    [Export] public Vector2I WallSouthAtlasCoords = new Vector2I(2, 0);
+    [Export] public Vector2I WallEastAtlasCoords = new Vector2I(3, 0);
+    [Export] public Vector2I WallWestAtlasCoords = new Vector2I(4, 0);
 
 	[Export] public int StartSourceId = 0;
     [Export] public Vector2I StartAtlasCoords = new Vector2I(2, 0);
@@ -47,10 +52,45 @@ public partial class DungeonRenderer : Node
                         break;
 
                     case DungeonTileType.Wall:
-                        WallLayer.SetCell(cell, WallSourceId, WallAtlasCoords);
+                        Vector2I wallCoords = GetWallAtlasCoords(dungeon, cell);
+                        WallLayer.SetCell(cell, WallSourceId, wallCoords);
                         break;
                 }
             }
         }
+    }
+
+    private bool IsFloorLike(DungeonData dungeon, Vector2I cell)
+    {
+        if (!dungeon.IsInBounds(cell))
+            return false;
+
+        DungeonTileType tile = dungeon.GetTile(cell);
+
+        return tile == DungeonTileType.Floor ||
+            tile == DungeonTileType.Start ||
+            tile == DungeonTileType.Exit;
+    }
+
+    private Vector2I GetWallAtlasCoords(DungeonData dungeon, Vector2I cell)
+    {
+        bool floorNorth = IsFloorLike(dungeon, cell + new Vector2I(0, -1));
+        bool floorSouth = IsFloorLike(dungeon, cell + new Vector2I(0, 1));
+        bool floorEast = IsFloorLike(dungeon, cell + new Vector2I(1, 0));
+        bool floorWest = IsFloorLike(dungeon, cell + new Vector2I(-1, 0));
+
+        if (floorSouth)
+            return WallNorthAtlasCoords;
+
+        if (floorNorth)
+            return WallSouthAtlasCoords;
+
+        if (floorWest)
+            return WallEastAtlasCoords;
+
+        if (floorEast)
+            return WallWestAtlasCoords;
+
+        return WallDefaultAtlasCoords;
     }
 }

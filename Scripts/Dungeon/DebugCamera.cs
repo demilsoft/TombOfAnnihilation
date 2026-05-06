@@ -6,27 +6,27 @@ public partial class DebugCamera : Camera2D
 
     public override void _Process(double delta)
     {
-		if (Input.IsActionPressed("move_left"))
-            GD.Print("move_left");
+		if (Input.IsActionPressed("camera_left"))
+            GD.Print("camera_left");
 
-        if (Input.IsActionPressed("move_right"))
-            GD.Print("move_right");
+        if (Input.IsActionPressed("camera_right"))
+            GD.Print("camera_right");
 
-        if (Input.IsActionPressed("move_up"))
-            GD.Print("move_up");
+        if (Input.IsActionPressed("camera_up"))
+            GD.Print("camera_up");
 			
-        if (Input.IsActionPressed("move_down"))
-            GD.Print("move_down");
+        if (Input.IsActionPressed("camera_down"))
+            GD.Print("camera_down");
 
         Vector2 move = Vector2.Zero;
 
-        if (Input.IsActionPressed("move_left"))
+        if (Input.IsActionPressed("camera_left"))
             move.X -= 1;
-        if (Input.IsActionPressed("move_right"))
+        if (Input.IsActionPressed("camera_right"))
             move.X += 1;
-        if (Input.IsActionPressed("move_up"))
+        if (Input.IsActionPressed("camera_up"))
             move.Y -= 1;
-        if (Input.IsActionPressed("move_down"))
+        if (Input.IsActionPressed("camera_down"))
             move.Y += 1;
 
         Position += move.Normalized() * PanSpeed * (float)delta;

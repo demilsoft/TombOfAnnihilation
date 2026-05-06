@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvki52a5spfoh"]
+
+[ext_resource type="Script" uid="uid://bkyd7q2v0gbbq" path="res://Scripts/Interaction/TestSwitch.cs" id="1_vic5n"]
+[ext_resource type="Texture2D" uid="uid://dovydldxsjyaw" path="res://Art/Sprites/torch-burning_1.png" id="2_knoyo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vic5n"]
+size = Vector2(32, 32)
+
+[node name="TestSwitch" type="Node2D"]
+script = ExtResource("1_vic5n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_knoyo")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vic5n")
