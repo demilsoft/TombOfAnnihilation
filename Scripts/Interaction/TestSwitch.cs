@@ -1,19 +1,26 @@
 using Godot;
 
+// public partial class TestSwitch : Node2D, IInteractable
+// {
+//     [Export] public TestDoor ConnectedDoor;
+
+//     public void Interact(PlayerController player)
+//     {
+//         GD.Print("Switch activated.");
+//         ConnectedDoor?.Toggle();
+//     }
+// }
+
 public partial class TestSwitch : Node2D, IInteractable
 {
-    private bool _activated = false;
+    [Export] public TestDoor ConnectedDoor;
+    [Export] public DungeonMain DungeonMain;
 
     public void Interact(PlayerController player)
     {
-        if (_activated)
-        {
-            GD.Print("Switch already activated.");
-            return;
-        }
+        GD.Print("Switch activated.");
 
-        _activated = true;
-
-        GD.Print("You hear stone grinding in the distance...");
+        ConnectedDoor?.Toggle();
+        DungeonMain?.RevealHiddenWall();
     }
 }

@@ -1,10 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://devwyany3l07r"]
 
-[ext_resource type="Texture2D" uid="uid://c8byhcd0kccpp" path="res://Art/Sprites/sprite_marker.jpg" id="1_02hp8"]
 [ext_resource type="Script" uid="uid://b8etwuskrt1f1" path="res://Scripts/Dungeon/SpawnMarker.cs" id="1_dw2cw"]
+[ext_resource type="Texture2D" uid="uid://dovydldxsjyaw" path="res://Art/Sprites/torch-burning_1.png" id="2_dw2cw"]
 
 [node name="SpawnMarker" type="Node2D"]
 script = ExtResource("1_dw2cw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_02hp8")
+rotation = -0.002190861
+texture = ExtResource("2_dw2cw")

@@ -4,24 +4,20 @@ public partial class DungeonRenderer : Node
 {
     [Export] public TileMapLayer FloorLayer;
     [Export] public TileMapLayer WallLayer;
-
     [Export] public int FloorSourceId = 0;
     [Export] public Vector2I FloorAtlasCoords = new Vector2I(0, 0);
-
     [Export] public int WallSourceId = 0;
-
     [Export] public Vector2I WallDefaultAtlasCoords = new Vector2I(0, 0);
     [Export] public Vector2I WallNorthAtlasCoords = new Vector2I(1, 0);
     [Export] public Vector2I WallSouthAtlasCoords = new Vector2I(2, 0);
     [Export] public Vector2I WallEastAtlasCoords = new Vector2I(3, 0);
     [Export] public Vector2I WallWestAtlasCoords = new Vector2I(4, 0);
-
 	[Export] public int StartSourceId = 0;
     [Export] public Vector2I StartAtlasCoords = new Vector2I(2, 0);
-
     [Export] public int ExitSourceId = 0;
     [Export] public Vector2I ExitAtlasCoords = new Vector2I(3, 0);
-
+    [Export] public int HiddenWallSourceId = 0;
+    [Export] public Vector2I HiddenWallAtlasCoords = new Vector2I(0, 0);
 
     public void Render(DungeonData dungeon)
     {
@@ -54,6 +50,10 @@ public partial class DungeonRenderer : Node
                     case DungeonTileType.Wall:
                         Vector2I wallCoords = GetWallAtlasCoords(dungeon, cell);
                         WallLayer.SetCell(cell, WallSourceId, wallCoords);
+                        break;
+
+                    case DungeonTileType.HiddenWall:
+                        WallLayer.SetCell(cell, HiddenWallSourceId, HiddenWallAtlasCoords);
                         break;
                 }
             }

@@ -8,5 +8,6 @@ public enum DungeonTileType
     Wall = 2,
     Door = 3,
     Start = 4,
-    Exit = 5
+    Exit = 5,
+    HiddenWall = 6
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dax1e5ujbqe6i"]
+[gd_scene load_steps=13 format=3 uid="uid://dax1e5ujbqe6i"]
 
 [ext_resource type="Script" uid="uid://bh8d0k82sht24" path="res://Scripts/Dungeon/DungeonMain.cs" id="1_1rloc"]
 [ext_resource type="PackedScene" uid="uid://devwyany3l07r" path="res://Scenes/SpawnMarker.tscn" id="2_2r2rd"]
@@ -6,7 +6,8 @@
 [ext_resource type="Script" uid="uid://cxfbqh5en50tq" path="res://Scripts/Dungeon/DungeonRenderer.cs" id="3_q6101"]
 [ext_resource type="Texture2D" uid="uid://cavehr151omji" path="res://Art/Tiles/crypt-ground-1-to-2.png" id="4_i44xl"]
 [ext_resource type="Texture2D" uid="uid://dc4cpynqfru0a" path="res://Art/Tiles/crypt-wall-1.png" id="5_i44xl"]
-[ext_resource type="PackedScene" uid="uid://bvki52a5spfoh" path="res://Scenes/TestSwitch.tscn" id="7_13sn6"]
+[ext_resource type="PackedScene" uid="uid://bvki52a5spfoh" path="res://Scenes/Interaction/TestSwitch.tscn" id="7_13sn6"]
+[ext_resource type="PackedScene" uid="uid://dybw3tr5kvxnh" path="res://Scenes/Interaction/TestDoor.tscn" id="8_r8e54"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_13sn6"]
 texture = ExtResource("4_i44xl")
@@ -237,6 +238,7 @@ Camera = NodePath("CameraMain")
 SpawnMarkerScene = ExtResource("2_2r2rd")
 PlayerScene = ExtResource("3_i44xl")
 TestSwitchScene = ExtResource("7_13sn6")
+TestDoorScene = ExtResource("8_r8e54")
 
 [node name="FloorLayer" type="TileMapLayer" parent="."]
 position = Vector2(0, -1)
@@ -249,13 +251,13 @@ tile_set = SubResource("TileSet_11aaa")
 script = ExtResource("3_q6101")
 FloorLayer = NodePath("../FloorLayer")
 WallLayer = NodePath("../WallLayer")
+FloorAtlasCoords = Vector2i(2, 2)
 WallDefaultAtlasCoords = Vector2i(2, 5)
 WallNorthAtlasCoords = Vector2i(2, 3)
 WallEastAtlasCoords = Vector2i(0, 2)
 WallWestAtlasCoords = Vector2i(4, 2)
 StartAtlasCoords = Vector2i(2, 2)
 ExitAtlasCoords = Vector2i(2, 2)
+HiddenWallAtlasCoords = Vector2i(13, 3)
 
 [node name="CameraMain" type="Camera2D" parent="."]
-
-[node name="TestSwitch" parent="." instance=ExtResource("7_13sn6")]
